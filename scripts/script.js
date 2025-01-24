@@ -16,8 +16,7 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
         return response.json();
       })
       .then((data) => {
-        // Updated to match "BB ID" instead of "ID"
-        const employeeData = data.find((employee) => employee["BB ID"] === employeeId);
+        const employeeData = data.find((employee) => employee["BB ID"] === parseInt(employeeId));
   
         if (!employeeData) {
           alert("Employee ID not found. Please try again.");
@@ -40,10 +39,10 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
       <h2>Salary Details for ${employeeData.Name}</h2>
       <table>
         <tr><th>Employee ID</th><td>${employeeData["BB ID"]}</td></tr>
-        <tr><th>Mobile</th><td>${employeeData.Mobile}</td></tr>
-        <tr><th>Total Weekly Earnings</th><td>${employeeData["Total Weekly Earnings"]}</td></tr>
+        <tr><th>Mobile</th><td>${employeeData["contact no"]}</td></tr>
+        <tr><th>Total Weekly Earnings</th><td>${employeeData["Daily Total Weekly Earning"]}</td></tr>
         <tr><th>Total Rental Charges</th><td>${employeeData["Total Rental Charges"]}</td></tr>
-        <tr><th>Advance Paid</th><td>${employeeData["Advance Paid"]}</td></tr>
+        <tr><th>Advance Paid</th><td>${employeeData["Advance"]}</td></tr>
         <tr><th>Final Payment</th><td>${employeeData["Final Payment"]}</td></tr>
       </table>
     `;
