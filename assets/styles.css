@@ -1,89 +1,58 @@
-/* Reset styling */
-body, h1, form, label, input, button, div, table {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* General body styling */
-  body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  /* Container styling */
-  .container {
-    background: #ffffff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 90%;
-    max-width: 600px;
-  }
-  
-  /* Form styling */
-  form {
-    margin: 20px 0;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-  }
-  
-  input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 1em;
-    color: #fff;
-    background: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background: #0056b3;
-  }
-  
-  /* Table styling */
-  table {
+/* General Table Styling */
+table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin-top: 20px;
+    background-color: #f4f4f4; /* Light background for the table */
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
     text-align: left;
   }
   
-  table th, table td {
+  th {
+    background-color: #4CAF50; /* Green background for header */
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping for rows */
+  }
+  
+  tr:hover {
+    background-color: #ddd; /* Hover effect on rows */
+  }
+  
+  /* Styling for Salary Section */
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  #salary-data {
+    font-family: Arial, sans-serif;
+    color: #555;
+  }
+  
+  #salary-data table {
+    width: 80%;
+    margin: 20px auto;
+    font-size: 16px;
+  }
+  
+  #salary-data th, #salary-data td {
     padding: 10px;
-    border: 1px solid #ccc;
+    text-align: center;
   }
   
-  table th {
-    background: #f1f1f1;
-  }
-  
-  table td {
-    background: #fafafa;
-  }
-  
-  .salary-data {
-    margin-top: 20px;
+  #salary-data tr:nth-child(odd) {
+    background-color: #f9f9f9;
   }
   

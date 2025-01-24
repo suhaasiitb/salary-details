@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Data</title>
-  <link rel="stylesheet" href="styles/styles.css">
+  <title>Employee Salary</title>
+  <link rel="stylesheet" href="assets/styles.css"> <!-- Ensure the correct path to the CSS -->
 </head>
 <body>
   <div class="container">
     <h1>Employee Salary Data</h1>
     <form id="employee-form">
       <label for="employee-id">Enter Employee ID:</label>
-      <input type="text" id="employee-id" placeholder="e.g., 739484">
+      <input type="text" id="employee-id" placeholder="BB ID">
       <button type="submit">Search</button>
     </form>
-    <div id="salary-data" class="salary-data">
-      <!-- Salary details and tables will appear here -->
-    </div>
+
+    <div id="salary-data"></div> <!-- The table will be dynamically inserted here -->
   </div>
+
+  <script src="scripts/script.js"></script> <!-- Ensure the correct path to the JS file -->
 </body>
 </html>
