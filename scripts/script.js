@@ -16,12 +16,16 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
         return response.json();
       })
       .then((data) => {
+        console.log("Fetched data:", data); // Debug: View the fetched data
         const employeeData = data.find((employee) => employee["BB ID"] === parseInt(employeeId));
   
         if (!employeeData) {
           alert("Employee ID not found. Please try again.");
           return;
         }
+  
+        // Debug: Log the employee data for inspection
+        console.log("Employee data found:", employeeData);
   
         // Display the salary details
         displaySalaryDetails(employeeData);
@@ -55,16 +59,21 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
     // Iterate through the date-based data
     for (let date in employeeData) {
       if (date.includes("-")) {
-        // Format the date to be more readable
-        const formattedDate = new Date(date).toLocaleDateString();
+        // Check if the key is a valid date-like field (like 8-Jan-2025)
         const orderData = employeeData[date];
         const payData = employeeData[`${date.split('-')[0]}th Pay`];
   
+        // Debug: Log each date to check if it matches correctly
+        console.log(`Processing date: ${date}, Orders: ${orderData}, Pay: ${payData}`);
+  
+        // Format the date to be more readable
+        const formattedDate = new Date(date).toLocaleDateString();
+        
         salaryHtml += `
           <tr>
             <td>${formattedDate}</td>
             <td>${orderData}</td>
-            <td>${payData}</td>
+            <td>${payData || 'N/A'}</td>
           </tr>
         `;
       }
