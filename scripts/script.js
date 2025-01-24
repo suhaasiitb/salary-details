@@ -16,16 +16,13 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched data:", data); // Debug: View the fetched data
+        // Look for employee matching by BB ID
         const employeeData = data.find((employee) => employee["BB ID"] === parseInt(employeeId));
   
         if (!employeeData) {
           alert("Employee ID not found. Please try again.");
           return;
         }
-  
-        // Debug: Log the employee data for inspection
-        console.log("Employee data found:", employeeData);
   
         // Display the salary details
         displaySalaryDetails(employeeData);
@@ -39,7 +36,7 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
   function displaySalaryDetails(employeeData) {
     const salaryDataDiv = document.getElementById("salary-data");
   
-    // Display general salary details
+    // Display general salary details (non-date data)
     let salaryHtml = `
       <h2>Salary Details for ${employeeData.Name}</h2>
       <table>
@@ -52,28 +49,26 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
       </table>
     `;
   
-    // Generate a table for date-wise data (orders and pay)
+    // Add the date-wise orders and pay data
     salaryHtml += "<h3>Date-wise Orders and Pay</h3><table>";
     salaryHtml += "<tr><th>Date</th><th>Orders</th><th>Pay</th></tr>";
   
-    // Iterate through the date-based data
+    // Iterate over each date-based key in employeeData
     for (let date in employeeData) {
-      if (date.includes("-")) {
-        // Check if the key is a valid date-like field (like 8-Jan-2025)
-        const orderData = employeeData[date];
-        const payData = employeeData[`${date.split('-')[0]}th Pay`];
-  
-        // Debug: Log each date to check if it matches correctly
-        console.log(`Processing date: ${date}, Orders: ${orderData}, Pay: ${payData}`);
-  
-        // Format the date to be more readable
+      // Check if the key matches a date pattern like "8-Jan-2025"
+      if (date.match(/^\d{1,2}-\w{3}-\d{4}$/)) {
         const formattedDate = new Date(date).toLocaleDateString();
-        
+        const orderData = employeeData[date];
+  
+        // Check for the corresponding pay for this date, e.g., "8th Pay"
+        const payField = `${parseInt(date.split('-')[0])}th Pay`; // Creates "8th Pay" from "8-Jan-2025"
+        const payData = employeeData[payField] || "Not available"; // Default to "Not available" if pay data is missing
+  
         salaryHtml += `
           <tr>
             <td>${formattedDate}</td>
             <td>${orderData}</td>
-            <td>${payData || 'N/A'}</td>
+            <td>${payData}</td>
           </tr>
         `;
       }
@@ -81,7 +76,7 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
   
     salaryHtml += "</table>";
   
-    // Insert the data into the page
+    // Insert the generated HTML into the page
     salaryDataDiv.innerHTML = salaryHtml;
   }
   
