@@ -1,58 +1,119 @@
-/* General Table Styling */
-table {
+/* General reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Full-screen gradient background */
+  body {
+    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2d3436;
+  }
+  
+  /* Main container centering */
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 100%;
+  }
+  
+  /* Card container styling */
+  .card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Title styling */
+  .card h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Subheading */
+  .card p {
+    font-size: 1rem;
+    color: #636e72;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form input styling */
+  #employee-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  #employee-form input:focus {
+    border-color: #0984e3;
+  }
+  
+  /* Button styling */
+  #employee-form button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #0984e3;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  #employee-form button:hover {
+    background: #74b9ff;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    margin-top: 1rem;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #f4f4f4; /* Light background for the table */
   }
   
   th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 0.8rem;
+    border: 1px solid #dfe6e9;
     text-align: left;
   }
   
   th {
-    background-color: #4CAF50; /* Green background for header */
-    color: white;
+    background: #0984e3;
+    color: #fff;
   }
   
-  tr:nth-child(even) {
-    background-color: #f2f2f2; /* Zebra striping for rows */
+  td {
+    background: #f5f6fa;
   }
   
-  tr:hover {
-    background-color: #ddd; /* Hover effect on rows */
-  }
-  
-  /* Styling for Salary Section */
-  h2 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  h3 {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  #salary-data {
-    font-family: Arial, sans-serif;
-    color: #555;
-  }
-  
-  #salary-data table {
-    width: 80%;
-    margin: 20px auto;
-    font-size: 16px;
-  }
-  
-  #salary-data th, #salary-data td {
-    padding: 10px;
-    text-align: center;
-  }
-  
-  #salary-data tr:nth-child(odd) {
-    background-color: #f9f9f9;
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
