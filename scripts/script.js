@@ -46,5 +46,11 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
         <tr><th>Final Payment</th><td>${employeeData["Final Payment"]}</td></tr>
       </table>
     `;
+  
+    // Debugging: Check if content is being updated
+    console.log("Displaying salary details:", employeeData);
+  
+    // Force reflow in Safari to ensure the page updates correctly
+    salaryDataDiv.offsetHeight; // Accessing offsetHeight forces reflow
   }
   
