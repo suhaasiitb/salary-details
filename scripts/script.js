@@ -35,46 +35,44 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
   function displaySalaryDetails(employeeData) {
     const salaryDataDiv = document.getElementById("salary-data");
   
-    // Start constructing the table
-    let tableHTML = `
+    // Display general salary details
+    let salaryHtml = `
       <h2>Salary Details for ${employeeData.Name}</h2>
       <table>
         <tr><th>Employee ID</th><td>${employeeData["BB ID"]}</td></tr>
         <tr><th>Mobile</th><td>${employeeData["contact no"]}</td></tr>
-        <tr><th>Total Weekly Earnings</th><td>${employeeData["Daily Total Weekly Earning"]}</td></tr>
+        <tr><th>Daily Total Weekly Earning</th><td>${employeeData["Daily Total Weekly Earning"]}</td></tr>
         <tr><th>Total Rental Charges</th><td>${employeeData["Total Rental Charges"]}</td></tr>
-        <tr><th>Advance Paid</th><td>${employeeData["Advance"]}</td></tr>
+        <tr><th>Advance</th><td>${employeeData["Advance"]}</td></tr>
         <tr><th>Final Payment</th><td>${employeeData["Final Payment"]}</td></tr>
       </table>
-      <h3>Date-wise Orders and Earnings</h3>
-      <table>
-        <tr><th>Date</th><th>Orders</th><th>Pay</th></tr>
     `;
   
-    // Loop through the date-related keys in employeeData
-    const dateKeys = Object.keys(employeeData).filter(key => key.includes("-"));
-    dateKeys.forEach(date => {
-      // Format the pay field key based on the date (e.g., "8th Pay" for "8-Jan-2025")
-      const payKey = date.split("-")[0] + "th Pay"; // Convert "8-Jan-2025" to "8th Pay"
+    // Generate a table for date-wise data (orders and pay)
+    salaryHtml += "<h3>Date-wise Orders and Pay</h3><table>";
+    salaryHtml += "<tr><th>Date</th><th>Orders</th><th>Pay</th></tr>";
   
-      // Add each date's orders and pay to the table
-      tableHTML += `
-        <tr>
-          <td>${date}</td>
-          <td>${employeeData[date]}</td>
-          <td>${employeeData[payKey]}</td>
-        </tr>
-      `;
-    });
+    // Iterate through the date-based data
+    for (let date in employeeData) {
+      if (date.includes("-")) {
+        // Format the date to be more readable
+        const formattedDate = new Date(date).toLocaleDateString();
+        const orderData = employeeData[date];
+        const payData = employeeData[`${date.split('-')[0]}th Pay`];
   
-    // Close the table and inject the HTML into the div
-    tableHTML += `</table>`;
-    salaryDataDiv.innerHTML = tableHTML;
+        salaryHtml += `
+          <tr>
+            <td>${formattedDate}</td>
+            <td>${orderData}</td>
+            <td>${payData}</td>
+          </tr>
+        `;
+      }
+    }
   
-    // Debugging: Check if content is being updated
-    console.log("Displaying salary details:", employeeData);
+    salaryHtml += "</table>";
   
-    // Force reflow in Safari to ensure the page updates correctly
-    salaryDataDiv.offsetHeight; // Accessing offsetHeight forces reflow
+    // Insert the data into the page
+    salaryDataDiv.innerHTML = salaryHtml;
   }
   
