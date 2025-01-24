@@ -1,52 +1,58 @@
-#container {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-}
-
-form {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#salary-data {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
+/* General Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
-}
-
-table, th, td {
+    margin-top: 20px;
+    background-color: #f4f4f4; /* Light background for the table */
+  }
+  
+  th, td {
+    padding: 10px;
     border: 1px solid #ddd;
-    padding: 8px;
     text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-td {
-    background-color: #fafafa;
-}
-
-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #4CAF50;
+  }
+  
+  th {
+    background-color: #4CAF50; /* Green background for header */
     color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping for rows */
+  }
+  
+  tr:hover {
+    background-color: #ddd; /* Hover effect on rows */
+  }
+  
+  /* Styling for Salary Section */
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  #salary-data {
+    font-family: Arial, sans-serif;
+    color: #555;
+  }
+  
+  #salary-data table {
+    width: 80%;
+    margin: 20px auto;
+    font-size: 16px;
+  }
+  
+  #salary-data th, #salary-data td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #salary-data tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  

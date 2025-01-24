@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Salary Details</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Salary</title>
+  <link rel="stylesheet" href="styles/styles.css"> <!-- Ensure the correct path to the CSS -->
 </head>
 <body>
+  <div class="container">
+    <h1>Employee Salary Data</h1>
+    <form id="employee-form">
+      <label for="employee-id">Enter Employee ID:</label>
+      <input type="text" id="employee-id" placeholder="BB ID">
+      <button type="submit">Search</button>
+    </form>
 
-    <div id="container">
-        <h1>Employee Salary Details</h1>
-        <form id="employee-form">
-            <label for="employee-id">Enter Employee ID: </label>
-            <input type="text" id="employee-id" required>
-            <button type="submit">Search</button>
-        </form>
-        
-        <div id="salary-data">
-            <!-- Salary and orders data will be displayed here -->
-        </div>
-    </div>
+    <div id="salary-data"></div> <!-- The table will be dynamically inserted here -->
+  </div>
 
-    <script src="scripts/script.js"></script>
+  <script src="scripts/script.js"></script> <!-- Ensure the correct path to the JS file -->
 </body>
 </html>
